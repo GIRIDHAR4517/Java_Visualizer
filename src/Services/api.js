@@ -9,8 +9,9 @@ export async function apiRequest(url, options) {
     },
   });
 
-  if (res.status === 401) {
+  if (res.status === 401 || res.status === 403) {
     localStorage.removeItem("token");
+    alert("Session Expired redirecting to login page ...")
     window.location.href = "/login";
   }
 
